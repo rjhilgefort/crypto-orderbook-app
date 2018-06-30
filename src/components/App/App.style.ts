@@ -1,5 +1,5 @@
-import styled from './styled-components';
-import { rotate360 } from './styled-components/key-frames';
+import styled from 'src/styled-components';
+import { rotate360 } from 'src/styled-components/key-frames';
 
 export const Wrapper = styled.div`
   text-align: center;

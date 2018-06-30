@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import { injectGlobal } from './styled-components';
+import App from 'src/components/App';
+import registerServiceWorker from 'src/registerServiceWorker';
+import { injectGlobal } from 'src/styled-components';
 
 // TODO: Typescript complains if you don't assign it to a variable
 // @ts-ignore
