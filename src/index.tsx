@@ -1,8 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './App';
-import './index.css';
 import registerServiceWorker from './registerServiceWorker';
+import { injectGlobal } from './styled-components';
+
+// TODO: Typescript complains if you don't assign it to a variable
+// @ts-ignore
+const ig = injectGlobal`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+`;
 
 ReactDOM.render(
   <App />,
