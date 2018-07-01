@@ -11,6 +11,7 @@ const S: object = create({
 
 
 const isTrue = R.equals(true);
+const toFixed = (num: number) => (x: any) => x.toFixed(num);
 
 export default {
   // ALL THE RAMDAS
@@ -22,4 +23,5 @@ export default {
     'left',
   ])(S),
   isTrue,
+  toFixed,
 };
