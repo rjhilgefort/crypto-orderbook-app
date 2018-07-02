@@ -1,5 +1,4 @@
 // tslint:disable:no-console
-import { debounce } from 'lodash';
 import * as R from 'ramda';
 import { create, env } from 'sanctuary';
 // import $ from 'sanctuary-def';
@@ -30,7 +29,6 @@ export default {
     'Right',
     'left',
   ])(S),
-  debounce,
   isTrue,
   notNil,
   toFixed,

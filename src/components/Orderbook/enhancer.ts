@@ -7,7 +7,7 @@ import _ from 'src/utils';
 
 export default compose(
   branch(
-    _.pathSatisfies(_.isNil, ['market']),
+    _.pathSatisfies(_.anyPass([_.isNil, _.isEmpty]), ['market']),
     renderComponent(SearchPrompt),
   ),
   connect(({ market }: { market: string }) => ({

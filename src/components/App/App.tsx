@@ -22,7 +22,7 @@ const App: React.SFC<IProps> = ({ market, updateMarket }) => {
       <Grid centered={true} columns={2}>
         <Grid.Column textAlign={'center'}>
           <InputStyled
-            placeholder='BTC-ETC, BTC_DOGE, etc...'
+            placeholder='BTC-ETC, BTC_DOGE, btc-zrx, etc...'
             size='big'
             onChange={inputOnChange}
             value={market}
