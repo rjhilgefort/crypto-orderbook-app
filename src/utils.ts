@@ -1,4 +1,5 @@
 // tslint:disable:no-console
+import { debounce } from 'lodash';
 import * as R from 'ramda';
 import { create, env } from 'sanctuary';
 // import $ from 'sanctuary-def';
@@ -12,6 +13,7 @@ const S: object = create({
 
 const isTrue = R.equals(true);
 const toFixed = (num: number) => (x: any) => x.toFixed(num);
+const notNil = R.complement(R.isNil);
 const trace = (label: string) => (x: any) => {
   console.log('=================');
   console.log(label);
@@ -28,7 +30,9 @@ export default {
     'Right',
     'left',
   ])(S),
+  debounce,
   isTrue,
+  notNil,
   toFixed,
   trace,
 };

@@ -15,15 +15,10 @@ export type CombinedOrderbook = {
   bids: Array<CombinedOrder>;
 }
 
-export type CombinedOrderbookGraphData = {
-  asks: AreaGraphData;
-  bids: AreaGraphData;
-}
-
 export type OrderbookDataPoint = {
   name: Rate,
   asks: Array<Quantity>,
   bids: Array<Quantity>,
 }
 
-export type CombinedOrderbookGraphData_New = Array<OrderbookDataPoint>
+export type CombinedOrderbookGraphData = Array<OrderbookDataPoint>

@@ -1,58 +1,26 @@
 import { connect } from 'react-refetch';
-import { compose } from 'recompose';
+import { branch, compose, renderComponent } from 'recompose';
+import ErrorMessage from 'src/components/ErrorMessage';
+import SearchPrompt from 'src/components/SearchPrompt';
 import withLoading from 'src/hoc/withLoading';
-import { CombinedOrderbook, CombinedOrderbookGraphData_New } from 'src/types/combined-orderbook';
 import _ from 'src/utils';
 
-const getQuantitiesValues = _.compose(
-  _.when(
-    _.compose(_.equals(1),_.length),
-     // @ts-ignore
-    _.compose(_.repeat(_.__, 2), _.head)
-  ),
-  _.map(_.prop('Quantity'))
-);
-
-const ordersByBook = _.reduce(
-  (valuesAcc, [book,, quantities]) =>
-    _.assoc(book, getQuantitiesValues(quantities), valuesAcc), {}
-);
-
-type CombinedOrderbookToGraphData = (x: CombinedOrderbook) => CombinedOrderbookGraphData_New;
-const combinedOrderbookToGraphData: CombinedOrderbookToGraphData =
-  // @ts-ignore
-  _.compose(
-    _.trace('reduce'),
-    _.reduce(
-      // @ts-ignore
-      (pointAcc, [rate, orders]) => _.append({
-        name: rate,
-        ...ordersByBook(orders),
-      }, pointAcc),
-      [],
-    ),
-    // @ts-ignore
-    _.sortBy(_.nth(0)),
-    _.toPairs,
-    // @ts-ignore
-    _.groupBy(_.nth(1)),
-    _.chain(([book, orders]) => _.map(_.prepend(book), orders)),
-    _.toPairs,
-  );
-
 export default compose(
-  connect(() => ({
+  branch(
+    _.pathSatisfies(_.isNil, ['market']),
+    renderComponent(SearchPrompt),
+  ),
+  connect(({ market }: { market: string }) => ({
     orderbookFetch: {
       refreshInterval: 5000,
-      then: _.compose(
-        _.objOf('value'),
-        combinedOrderbookToGraphData,
-        _.prop('data'),
-      ),
-      url: 'http://localhost:4040/orderbook?market=BTC-ETH',
+      url: `http://localhost:4040/orderbook?market=${market}`,
     },
   })),
   withLoading(
     _.pathSatisfies(_.isTrue, ['orderbookFetch', 'pending'])
+  ),
+  branch(
+    _.pathSatisfies(_.notNil, ['orderbookFetch', 'value', 'error']),
+    renderComponent(ErrorMessage),
   ),
 );
