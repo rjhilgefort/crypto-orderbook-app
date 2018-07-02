@@ -1,3 +1,4 @@
+// tslint:disable:no-console
 import * as R from 'ramda';
 import { create, env } from 'sanctuary';
 // import $ from 'sanctuary-def';
@@ -9,9 +10,14 @@ const S: object = create({
   env: env.concat([]),
 });
 
-
 const isTrue = R.equals(true);
 const toFixed = (num: number) => (x: any) => x.toFixed(num);
+const trace = (label: string) => (x: any) => {
+  console.log('=================');
+  console.log(label);
+  console.log(x);
+  return x;
+};
 
 export default {
   // ALL THE RAMDAS
@@ -24,4 +30,5 @@ export default {
   ])(S),
   isTrue,
   toFixed,
+  trace,
 };
