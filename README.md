@@ -6,6 +6,8 @@ Companion API: https://github.com/rjhilgefort/crypto-orderbook-api
 
 ### [https://crypto-orderbook-app.now.sh](https://crypto-orderbook-app.now.sh)
 
+![](./demo.gif)
+
 # TODO:
 
 - Remove *all* // @ts-ignore

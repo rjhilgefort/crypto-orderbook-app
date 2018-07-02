@@ -5,7 +5,7 @@ import SearchPrompt from 'src/components/SearchPrompt';
 import withLoading from 'src/hoc/withLoading';
 import _ from 'src/utils';
 
-const HOST = process.env.REACT_APP_HOST || 'crypto-orderbook-api.now.sh';
+const HOST = process.env.REACT_APP_HOST || 'https://crypto-orderbook-api.now.sh';
 
 export default compose(
   branch(
@@ -15,7 +15,7 @@ export default compose(
   connect(({ market }: { market: string }) => ({
     orderbookFetch: {
       refreshInterval: 5000,
-      url: `http://${HOST}/orderbook?market=${market}`,
+      url: `${HOST}/orderbook?market=${market}`,
     },
   })),
   withLoading(
