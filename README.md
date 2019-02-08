@@ -2,13 +2,10 @@
 
 A combined orderbook app sourcing from `bittrex` and `poloniex`. Built with react, recompose, react-fetch, ramda, sanctuary, typescript, jest, and more.
 
-Companion API: https://github.com/rjhilgefort/crypto-orderbook-api
+- **Live At**: [https://crypto-orderbook-app.now.sh](https://crypto-orderbook-app.now.sh)
+- **Companion API**: [https://github.com/rjhilgefort/crypto-orderbook-api](https://github.com/rjhilgefort/crypto-orderbook-api)
 
-### [https://crypto-orderbook-app.now.sh](https://crypto-orderbook-app.now.sh)
+---
 
-![](./demo.gif)
-
-# TODO:
-
-- Remove *all* // @ts-ignore
-- More tests
+![](./screenshots/demo.gif)
+![](./screenshots/demo-static.png)
